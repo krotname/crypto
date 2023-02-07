@@ -1,6 +1,7 @@
 package name.krot.crypto;
 
 import lombok.extern.slf4j.Slf4j;
+import name.krot.crypto.util.Fish;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,42 +17,30 @@ import java.security.spec.KeySpec;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @Slf4j
 public class CryptoTest {
 
     @Test
-    @DisplayName("Загрузка рыбы")
-    void testReadFish() {
-        assertEquals("""
-                Равным образом, внедрение современных методик позволяет выполнить важные задания по разработке кластеризации усилий.
-                Противоположная точка зрения подразумевает, что многие известные личности представляют собой не что иное,
-                как квинтэссенцию победы маркетинга над разумом и должны быть своевременно верифицированы.
-                С учётом сложившейся международной обстановки, перспективное планирование позволяет выполнить важные
-                задания по разработке системы обучения кадров, соответствующей насущным потребностям.""",
-                Util.readFish());
-    }
-
-    @Test
-    @DisplayName("AES зашифровка и расшифровка")
+    @Deprecated
+    @DisplayName("AESManual зашифровка и расшифровка")
     void testAESCrypto() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 
         Security.addProvider(new BouncyCastleProvider());
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance("AESManual/CBC/PKCS5Padding");
         SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16]; // todo разная соль?
+        byte[] salt = new byte[16];
         random.nextBytes(salt);
         KeySpec spec = new PBEKeySpec("password".toCharArray(), salt,
-                65536, 256); // AES-256
+                65536, 256); // AESManual-256
         SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] key = f.generateSecret(spec).getEncoded();
-        SecretKeySpec keySpec = new SecretKeySpec(key, "AES");
+        SecretKeySpec keySpec = new SecretKeySpec(key, "AESManual");
         byte[] ivBytes = new byte[16];
         random.nextBytes(ivBytes);
         IvParameterSpec iv = new IvParameterSpec(ivBytes);
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, iv);
 
-        byte[] plainText = Util.readFish().getBytes(StandardCharsets.UTF_8);
+        byte[] plainText = Fish.fish().getBytes(StandardCharsets.UTF_8);
 
         byte[] encValue = cipher.doFinal(plainText);
 
@@ -64,7 +53,7 @@ public class CryptoTest {
 
         byte[] decryptValue = cipher.doFinal(encValue);
         String decryptString = new String(decryptValue, StandardCharsets.UTF_8);
-        assertEquals(Util.readFish(), decryptString);
+        assertEquals(Fish.fish(), decryptString);
     }
 
 }
