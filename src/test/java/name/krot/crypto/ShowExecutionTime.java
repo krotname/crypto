@@ -4,9 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 
 @Slf4j
-public abstract class ShowExecutionTime {
+@State(Scope.Thread)
+public class ShowExecutionTime {
     private long startExecTime;
 
     @BeforeEach

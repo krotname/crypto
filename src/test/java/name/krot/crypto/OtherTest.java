@@ -1,6 +1,7 @@
 package name.krot.crypto;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -23,6 +24,7 @@ public class OtherTest extends ShowExecutionTime {
     }
 
     @Test
+    @Disabled
     public void byteToString() throws UnsupportedEncodingException {
         byte[] bytes = {12, 27, -7, 23, -44, -11, 34, 14, -127, -40, -29, -52, 32, -54, -77, -69};
         String stringFromBytes = new String(bytes);

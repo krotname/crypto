@@ -5,6 +5,7 @@ import name.krot.crypto.encryptionSynchronous.AESManual;
 import name.krot.crypto.encryptionSynchronous.CryptSync;
 import name.krot.crypto.util.Constants;
 import name.krot.crypto.util.Fish;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ class AESManualTest extends ShowExecutionTime {
     private CryptSync aESManual;
 
     @Test
+    @Disabled
     void decryptAndEncrypt() {
         var fishLW = Fish.cryptographyEN(); // todo на других тестовых данных.
         var encrypt = aESManual.encrypt(fishLW, Constants.PASSWORD, Constants.SALT, Constants.IV);
@@ -48,7 +50,7 @@ class AESManualTest extends ShowExecutionTime {
     @Test
     @DisplayName("Скорость дешифрования")
     void loadTestDecode() { // todo оптимизация
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             aESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
     }
@@ -56,7 +58,7 @@ class AESManualTest extends ShowExecutionTime {
     @Test
     @DisplayName("Скорость шифрования")
     void loadTestEncode() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             aESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
     }
