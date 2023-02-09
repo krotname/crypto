@@ -2,20 +2,16 @@ package name.krot.crypto;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.ArrayEquals;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 @Slf4j
-public class OtherTest {
+public class OtherTest extends ShowExecutionTime {
     @Test
     public void randomIv() {
         SecureRandom random = new SecureRandom();
@@ -34,6 +30,7 @@ public class OtherTest {
         byte[] bytesFromString = stringFromBytes.getBytes("cp1251");
         assertArrayEquals(bytes, bytesFromString);
     }
+
     @Test
     public void defaultCharset() {
         log.info(Charset.defaultCharset().toString()); // windows-1251 [cp5347, ansi-1251, cp1251]

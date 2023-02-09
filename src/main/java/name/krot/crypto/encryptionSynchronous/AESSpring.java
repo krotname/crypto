@@ -14,7 +14,7 @@ public class AESSpring implements CryptSync {
     }
 
     @Override
-    public String decrypt(String string, String password, String salt,  String iv) {
+    public String decrypt(String string, String password, String salt, String iv) {
         TextEncryptor cryptographer = Encryptors.text(password, salt);
         return cryptographer.decrypt(string);
     }

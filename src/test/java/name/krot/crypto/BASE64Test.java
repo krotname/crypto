@@ -16,10 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest(classes = {BASE64.class})
-class BASE64Test {
+class BASE64Test extends ShowExecutionTime {
 
     @Autowired
     private Coder base64;
+
     @Test
     @DisplayName("Корректность декодирования")
     void testEncodeAndDecode() {
@@ -46,20 +47,16 @@ class BASE64Test {
     @Test
     @DisplayName("Скорость декодирования")
     void loadTestDecode() {
-        LocalDateTime start = LocalDateTime.now();
         for (int i = 0; i < 1_000_000; i++) {
             base64.decode("0JrRgNC40L/RgtC+0LPRgNCw0YTQuNGPINC90LAg0L/RgNCw0LrRgtC40LrQtQ==");
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 1_000_000 = 217 ms
     }
 
     @Test
     @DisplayName("Скорость кодирования")
-    void loadTestEncode() { // todo микрометр
-        LocalDateTime start = LocalDateTime.now();
+    void loadTestEncode() {
         for (int i = 0; i < 1_000; i++) {
             base64.encode(Fish.cryptographyRU());
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 1_000 = 802 ms
     }
 }

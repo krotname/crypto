@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest(classes = {AESManual.class})
-class AESManualTest {
+class AESManualTest extends ShowExecutionTime {
 
     public static final String CRYPT_VALUE = "ПR\u001C\u0019(§¶XђdKпежѕ.ш®Ив#г!Ch\u0005m .9”€";
     @Autowired
@@ -48,20 +48,16 @@ class AESManualTest {
     @Test
     @DisplayName("Скорость дешифрования")
     void loadTestDecode() { // todo оптимизация
-        LocalDateTime start = LocalDateTime.now();
         for (int i = 0; i < 100; i++) {
             aESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 100 = 13074 ms
     }
 
     @Test
     @DisplayName("Скорость шифрования")
     void loadTestEncode() {
-        LocalDateTime start = LocalDateTime.now();
         for (int i = 0; i < 100; i++) {
             aESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 11359 =  ms
     }
 }

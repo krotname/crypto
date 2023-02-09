@@ -10,14 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest(classes = {AESSpring.class})
-class AESSpringTest {
+class AESSpringTest extends ShowExecutionTime {
 
     public static final String CRYPT_VALUE = "d1430d276a3823d608b152a850d1c160e009bdf66a17808321f46702256f085e361266" +
             "51a17d966b2ecf260833e5ffc1b2374e3777c7f1bb3946a86079c16b3b";
@@ -49,21 +46,18 @@ class AESSpringTest {
 
     @Test
     @DisplayName("Скорость дешифрования")
+        // i7-9850H: 1_000 = 1984 ms
     void loadTestDecode() {
-        LocalDateTime start = LocalDateTime.now();
         for (int i = 0; i < 1_000; i++) {
             aESSpring.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 1_000 = 1984 ms
     }
 
     @Test
     @DisplayName("Скорость шифрования")
-    void loadTestEncode() {
-        LocalDateTime start = LocalDateTime.now();
+    void loadTestEncode() { // i7-9850H: 1_000 = 2774 ms
         for (int i = 0; i < 1_000; i++) {
             aESSpring.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
         }
-        log.info(String.valueOf(Duration.between(start, LocalDateTime.now()).toMillis())); // i7-9850H: 1_000 = 2774 ms
     }
 }

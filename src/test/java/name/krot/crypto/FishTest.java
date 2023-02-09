@@ -4,12 +4,9 @@ import name.krot.crypto.util.Fish;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.security.SecureRandom;
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FishTest {
+class FishTest extends ShowExecutionTime {
 
     @Test
     @DisplayName("Загрузка рыбы Криптография EN")

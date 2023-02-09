@@ -18,7 +18,7 @@ import java.security.spec.KeySpec;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-public class CryptoTest {
+public class CryptoTest extends ShowExecutionTime {
 
     @Test
     @Deprecated
