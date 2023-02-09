@@ -1,12 +1,13 @@
 package name.krot.crypto;
 
+import name.krot.crypto.codingTests.BaseCoderTest;
 import name.krot.crypto.util.Fish;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FishTest extends ShowExecutionTime {
+class FishTest extends BaseCoderTest {
 
     @Test
     @DisplayName("Загрузка рыбы Криптография EN")

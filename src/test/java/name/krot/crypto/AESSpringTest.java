@@ -1,6 +1,7 @@
 package name.krot.crypto;
 
 import lombok.extern.slf4j.Slf4j;
+import name.krot.crypto.codingTests.BaseCoderTest;
 import name.krot.crypto.encryptionSynchronous.AESSpring;
 import name.krot.crypto.encryptionSynchronous.CryptSync;
 import name.krot.crypto.util.Constants;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest(classes = {AESSpring.class})
-class AESSpringTest extends ShowExecutionTime {
+class AESSpringTest extends BaseCoderTest {
 
     public static final String CRYPT_VALUE = "d1430d276a3823d608b152a850d1c160e009bdf66a17808321f46702256f085e361266" +
             "51a17d966b2ecf260833e5ffc1b2374e3777c7f1bb3946a86079c16b3b";

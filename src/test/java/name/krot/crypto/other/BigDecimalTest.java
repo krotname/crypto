@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-@BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Fork(1)
 @Warmup(iterations = 1, time = 100, timeUnit = TimeUnit.MILLISECONDS)
@@ -23,7 +22,7 @@ public class BigDecimalTest {
 
     @Benchmark
     public void bigDecimalDeserializeConcat(Blackhole blackhole) {
-        blackhole.consume(new BigDecimal(String.valueOf(RANDOM.nextInt(999)) + "." + String.valueOf(RANDOM.nextInt(999_999))));
+        blackhole.consume(new BigDecimal(RANDOM.nextInt(999) + "." + RANDOM.nextInt(999_999)));
     }
 
     @Benchmark
@@ -49,7 +48,6 @@ public class BigDecimalTest {
     @Benchmark
     public void random(Blackhole blackhole) {
         blackhole.consume(RANDOM.nextInt(999_999_999));
-        ;
     }
 
     @Test

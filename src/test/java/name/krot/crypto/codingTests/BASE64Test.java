@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.codingTests;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.coding.BASE64;
@@ -9,14 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest(classes = {BASE64.class})
-class BASE64Test extends ShowExecutionTime {
+class BASE64Test extends BaseCoderTest {
 
     @Autowired
     private Coder base64;
@@ -34,7 +31,7 @@ class BASE64Test extends ShowExecutionTime {
     @DisplayName("Кодирование")
     void testEncode() {
         String encrypt = base64.encode(Fish.cryptographyRU());
-        log.debug(encrypt);
+        log.info(encrypt);
     }
 
     @Test

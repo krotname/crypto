@@ -1,6 +1,7 @@
 package name.krot.crypto;
 
 import lombok.extern.slf4j.Slf4j;
+import name.krot.crypto.codingTests.BaseCoderTest;
 import name.krot.crypto.util.Fish;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.Disabled;
@@ -19,7 +20,7 @@ import java.security.spec.KeySpec;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-public class CryptoTest extends ShowExecutionTime {
+public class CryptoTest extends BaseCoderTest {
 
     @Test
     @Deprecated

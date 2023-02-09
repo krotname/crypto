@@ -8,18 +8,14 @@ import java.util.Base64;
 @Slf4j
 @Component
 public class BASE64 implements Coder {
-
     @Override
     public String encode(String string) {
-        String encryptedValue = Base64.getEncoder().encodeToString(string.getBytes());
-
-        return encryptedValue;
+        return Base64.getEncoder().encodeToString(string.getBytes());
     }
 
     @Override
     public String decode(String string) {
-        byte[] decode = Base64.getDecoder().decode(string);
-        return new String(decode);
+        return new String(Base64.getDecoder().decode(string));
     }
 
 

@@ -9,16 +9,15 @@ import org.openjdk.jmh.annotations.State;
 
 @Slf4j
 @State(Scope.Thread)
-public class ShowExecutionTime {
-    private long startExecTime;
+public class TestWithExecutionTime {
 
+    private long startExecTime;
     @BeforeEach
-    public void start() {
+    void start() {
         startExecTime = System.currentTimeMillis();
     }
-
     @AfterEach
-    public void end(TestInfo testInfo) {
+    void end(TestInfo testInfo) {
         log.info("{} execution Time = {} ms", testInfo.getDisplayName(), System.currentTimeMillis() - startExecTime);
     }
 }
