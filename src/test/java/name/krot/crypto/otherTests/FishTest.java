@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.otherTests;
 
 import name.krot.crypto.codingTests.BaseCoderTest;
 import name.krot.crypto.util.Fish;
@@ -10,19 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FishTest extends BaseCoderTest {
 
     @Test
-    @DisplayName("Загрузка рыбы Криптография EN")
     void testReadCryptographyEN() {
         assertEquals("Cryptography in practice", Fish.cryptographyEN());
     }
 
     @Test
-    @DisplayName("Загрузка рыбы Криптография РУ")
     void testReadCryptographyRU() {
         assertEquals("Криптография на практике", Fish.cryptographyRU());
     }
 
     @Test
-    @DisplayName("Загрузка рыбы с переносом строк")
     void testReadFishLW() {
         assertEquals("""
                         Равным образом, внедрение современных методик позволяет выполнить важные задания по разработке кластеризации усилий.

@@ -1,11 +1,11 @@
-package name.krot.crypto;
+package name.krot.crypto.common;
 
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.annotations.Warmup;
 
-import static name.krot.crypto.BenchmarkTest.*;
+import static name.krot.crypto.common.BenchmarkTest.*;
 
 @Threads(THREADS)
 @Fork(value = FORK, jvmArgs = {XMS, XMX})

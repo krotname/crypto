@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.crypSyncTests;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.codingTests.BaseCoderTest;
@@ -23,21 +23,18 @@ class AESSpringTest extends BaseCoderTest {
     private CryptSync aESSpring;
 
     @Test
-    @DisplayName("Шифрование")
     void encrypt() {
         var encrypt = aESSpring.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
         log.debug(encrypt);
     }
 
     @Test
-    @DisplayName("Расшифровка")
     void decrypt() {
         var decrypt = aESSpring.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
         log.debug(decrypt);
     }
 
     @Test
-    @DisplayName("Корректность дешифрования")
     void decryptAndEncrypt() {
         var fishLW = Fish.fishLW();
         var encrypt = aESSpring.encrypt(fishLW, Constants.PASSWORD, Constants.SALT, Constants.IV);
@@ -46,19 +43,12 @@ class AESSpringTest extends BaseCoderTest {
     }
 
     @Test
-    @DisplayName("Скорость дешифрования")
-        // i7-9850H: 1_000 = 1984 ms
     void loadTestDecode() {
-        for (int i = 0; i < 1_000; i++) {
             aESSpring.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
-        }
     }
 
     @Test
-    @DisplayName("Скорость шифрования")
-    void loadTestEncode() { // i7-9850H: 1_000 = 2774 ms
-        for (int i = 0; i < 1_000; i++) {
+    void loadTestEncode() {
             aESSpring.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
-        }
     }
 }

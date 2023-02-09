@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.crypSyncTests;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.codingTests.BaseCoderTest;
@@ -24,7 +24,6 @@ public class CryptoTest extends BaseCoderTest {
 
     @Test
     @Deprecated
-    @DisplayName("AESManual зашифровка и расшифровка")
     @Disabled // todo починить
     void testAESCrypto() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 

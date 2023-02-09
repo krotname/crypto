@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.otherTests;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.codingTests.BaseCoderTest;

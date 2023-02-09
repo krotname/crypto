@@ -1,5 +1,3 @@
 spring:
   main:
     log-startup-info: false
-jmh:
-  fork: 0

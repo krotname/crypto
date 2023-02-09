@@ -1,4 +1,4 @@
-package name.krot.crypto;
+package name.krot.crypto.crypSyncTests;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.codingTests.BaseCoderTest;
@@ -32,32 +32,24 @@ class AESManualTest extends BaseCoderTest {
     }
 
     @Test
-    @DisplayName("Шифрование")
     void encrypt() {
         var encrypt = AESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
         log.info(encrypt);
     }
 
     @Test
-    @DisplayName("Расшифровка")
     void decrypt() {
         var decrypt = AESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
         log.info(decrypt);
     }
 
     @Test
-    @DisplayName("Скорость дешифрования")
     void loadTestDecode() { // todo оптимизация
-        for (int i = 0; i < 10; i++) {
             AESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
-        }
     }
 
     @Test
-    @DisplayName("Скорость шифрования")
     void loadTestEncode() {
-        for (int i = 0; i < 10; i++) {
             AESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
-        }
     }
 }
