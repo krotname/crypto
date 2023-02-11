@@ -1,7 +1,5 @@
-package name.krot.crypto.codingTests;
+package name.krot.crypto.coding;
 
-import name.krot.crypto.coding.BASE16;
-import name.krot.crypto.coding.Coder;
 import name.krot.crypto.util.Fish;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;

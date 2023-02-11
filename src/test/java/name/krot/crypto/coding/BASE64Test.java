@@ -1,17 +1,9 @@
-package name.krot.crypto.codingTests;
+package name.krot.crypto.coding;
 
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.coding.BASE32;
-import name.krot.crypto.coding.BASE64;
-import name.krot.crypto.coding.Coder;
 import name.krot.crypto.util.Fish;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 public class BASE64Test extends BaseCoderTest {

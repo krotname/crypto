@@ -1,13 +1,10 @@
-package name.krot.crypto.crypSyncTests;
+package name.krot.crypto.crypSync;
 
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.codingTests.BaseCoderTest;
-import name.krot.crypto.encryptionSynchronous.AESManual;
-import name.krot.crypto.encryptionSynchronous.CryptSync;
+import name.krot.crypto.coding.BaseCoderTest;
 import name.krot.crypto.util.Constants;
 import name.krot.crypto.util.Fish;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,11 +42,11 @@ class AESManualTest extends BaseCoderTest {
 
     @Test
     void loadTestDecode() { // todo оптимизация
-            AESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
+        AESManual.decrypt(CRYPT_VALUE, Constants.PASSWORD, Constants.SALT, Constants.IV);
     }
 
     @Test
     void loadTestEncode() {
-            AESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
+        AESManual.encrypt(Fish.cryptographyRU(), Constants.PASSWORD, Constants.SALT, Constants.IV);
     }
 }

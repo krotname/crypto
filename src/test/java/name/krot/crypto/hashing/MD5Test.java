@@ -1,4 +1,4 @@
-package name.krot.crypto.hashingTests;
+package name.krot.crypto.hashing;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.hashing.Hash;

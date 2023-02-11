@@ -1,4 +1,4 @@
-package name.krot.crypto.encryptionSynchronous;
+package name.krot.crypto.crypSync;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.exception.CryptException;

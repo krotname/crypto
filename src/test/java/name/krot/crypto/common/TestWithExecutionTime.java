@@ -12,10 +12,12 @@ import org.openjdk.jmh.annotations.State;
 public class TestWithExecutionTime {
 
     private long startExecTime;
+
     @BeforeEach
     void start() {
         startExecTime = System.currentTimeMillis();
     }
+
     @AfterEach
     void end(TestInfo testInfo) {
         log.info("{} execution Time = {} ms", testInfo.getDisplayName(), System.currentTimeMillis() - startExecTime);

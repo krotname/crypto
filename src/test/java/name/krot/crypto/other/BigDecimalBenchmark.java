@@ -1,4 +1,4 @@
-package name.krot.crypto.otherTests;
+package name.krot.crypto.other;
 
 import lombok.extern.slf4j.Slf4j;
 import name.krot.crypto.common.BenchmarkTest;

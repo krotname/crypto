@@ -1,11 +1,10 @@
-package name.krot.crypto.crypSyncTests;
+package name.krot.crypto.crypSync;
 
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.codingTests.BaseCoderTest;
+import name.krot.crypto.coding.BaseCoderTest;
 import name.krot.crypto.util.Fish;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.*;
@@ -24,7 +23,8 @@ public class CryptoTest extends BaseCoderTest {
 
     @Test
     @Deprecated
-    @Disabled // todo починить
+    @Disabled
+        // todo починить
     void testAESCrypto() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 
         Security.addProvider(new BouncyCastleProvider());

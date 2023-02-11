@@ -1,7 +1,7 @@
-package name.krot.crypto.otherTests;
+package name.krot.crypto.other;
 
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.codingTests.BaseCoderTest;
+import name.krot.crypto.coding.BaseCoderTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

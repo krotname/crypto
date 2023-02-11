@@ -1,8 +1,8 @@
-package name.krot.crypto.codingTests;
+package name.krot.crypto.coding;
 
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.common.BenchmarkTest;
 import name.krot.crypto.coding.Coder;
+import name.krot.crypto.common.BenchmarkTest;
 import name.krot.crypto.util.Fish;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

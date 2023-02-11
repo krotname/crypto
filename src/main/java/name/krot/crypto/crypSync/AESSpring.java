@@ -1,4 +1,4 @@
-package name.krot.crypto.encryptionSynchronous;
+package name.krot.crypto.crypSync;
 
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;

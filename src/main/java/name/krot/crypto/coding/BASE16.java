@@ -8,7 +8,7 @@ public class BASE16 implements Coder {
 
     @Override
     public String encode(String string) {
-            return base16.encodeToString(string.getBytes());
+        return base16.encodeToString(string.getBytes());
     }
 
     @Override

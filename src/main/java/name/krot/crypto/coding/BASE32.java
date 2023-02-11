@@ -5,7 +5,7 @@ public class BASE32 implements Coder {
 
     @Override
     public String encode(String string) {
-            return base32.encodeToString(string.getBytes());
+        return base32.encodeToString(string.getBytes());
     }
 
     @Override

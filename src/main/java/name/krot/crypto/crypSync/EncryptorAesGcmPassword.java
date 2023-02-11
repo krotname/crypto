@@ -1,4 +1,4 @@
-package name.krot.crypto.encryptionSynchronous;
+package name.krot.crypto.crypSync;
 
 
 import name.krot.crypto.util.CryptoUtils;

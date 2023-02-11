@@ -1,8 +1,7 @@
-package name.krot.crypto.otherTests;
+package name.krot.crypto.other;
 
-import name.krot.crypto.codingTests.BaseCoderTest;
+import name.krot.crypto.coding.BaseCoderTest;
 import name.krot.crypto.util.Fish;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
