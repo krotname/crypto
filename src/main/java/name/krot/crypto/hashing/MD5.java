@@ -11,6 +11,6 @@ import java.nio.charset.StandardCharsets;
 public class MD5 implements Hash { // https://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash-in-java
     @Override
     public String hash(String string) {
-        return new String(DigestUtils.md5Digest(string.getBytes(StandardCharsets.UTF_8)));
+        return DigestUtils.md5DigestAsHex(string.getBytes(StandardCharsets.UTF_8));
     }
 }

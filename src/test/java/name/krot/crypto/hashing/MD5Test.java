@@ -1,29 +1,33 @@
 package name.krot.crypto.hashing;
 
 import lombok.extern.slf4j.Slf4j;
+import name.krot.crypto.common.BenchmarkTest;
 import name.krot.crypto.util.Fish;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.infra.Blackhole;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-@SpringBootTest(classes = {MD5.class})
-class MD5Test {
+public class MD5Test extends BenchmarkTest {
 
-    @Autowired
-    private Hash mD5;
+    private static final Hash md5 = new MD5();
 
     @Test
     void hash() {
-        log.info(mD5.hash(Fish.cryptographyRU())); // todo подругому
+        log.info(md5.hash(Fish.cryptographyRU()));
     }
 
     @Test
     void uniquenessTest() {
-        String hash1 = mD5.hash(Fish.cryptographyRU());
-        String hash2 = mD5.hash(Fish.cryptographyRU());
+        String hash1 = md5.hash(Fish.cryptographyRU());
+        String hash2 = md5.hash(Fish.cryptographyRU());
         assertEquals(hash1, hash2);
+    }
+
+    @Benchmark
+    public void benchmarkMD5(Blackhole bh) {
+        bh.consume(md5.hash(Fish.cryptographyRU()));
     }
 }
