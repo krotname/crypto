@@ -1,10 +1,10 @@
 package name.krot.crypto.coding.implementation;
 
-public class Base58 {
+public class BaseCustom {
 
     private static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
             .toCharArray();
-    private static final int BASE_58 = ALPHABET.length;
+    private static final int BASE = ALPHABET.length;
     private static final int BASE_256 = 256;
 
     private static final int[] INDEXES = new int[128];
@@ -46,7 +46,7 @@ public class Base58 {
 
         int startAt = zeroCount;
         while (startAt < input.length) {
-            byte mod = divmod58(input, startAt);
+            byte mod = divmod(input, startAt);
             if (input[startAt] == 0) {
                 ++startAt;
             }
@@ -78,29 +78,29 @@ public class Base58 {
             return new byte[0];
         }
 
-        byte[] input58 = new byte[input.length()];
+        byte[] bytes = new byte[input.length()];
         //
-        // Transform the String to a base58 byte sequence
+        // Transform the String to a base byte sequence
         //
         for (int i = 0; i < input.length(); ++i) {
             char c = input.charAt(i);
 
-            int digit58 = -1;
+            int digit = -1;
             if (c >= 0 && c < 128) {
-                digit58 = INDEXES[c];
+                digit = INDEXES[c];
             }
-            if (digit58 < 0) {
-                throw new RuntimeException("Not a Base58 input: " + input);
+            if (digit < 0) {
+                throw new RuntimeException("Not a Base input: " + input);
             }
 
-            input58[i] = (byte) digit58;
+            bytes[i] = (byte) digit;
         }
 
         //
         // Count leading zeroes
         //
         int zeroCount = 0;
-        while (zeroCount < input58.length && input58[zeroCount] == 0) {
+        while (zeroCount < bytes.length && bytes[zeroCount] == 0) {
             ++zeroCount;
         }
 
@@ -111,9 +111,9 @@ public class Base58 {
         int j = temp.length;
 
         int startAt = zeroCount;
-        while (startAt < input58.length) {
-            byte mod = divmod256(input58, startAt);
-            if (input58[startAt] == 0) {
+        while (startAt < bytes.length) {
+            byte mod = divmod256(bytes, startAt);
+            if (bytes[startAt] == 0) {
                 ++startAt;
             }
 
@@ -130,27 +130,27 @@ public class Base58 {
         return copyOfRange(temp, j - zeroCount, temp.length);
     }
 
-    private static byte divmod58(byte[] number, int startAt) {
+    private static byte divmod(byte[] number, int startAt) { // todo понять
         int remainder = 0;
         for (int i = startAt; i < number.length; i++) {
             int digit256 = (int) number[i] & 0xFF;
             int temp = remainder * BASE_256 + digit256;
 
-            number[i] = (byte) (temp / BASE_58);
+            number[i] = (byte) (temp / BASE);
 
-            remainder = temp % BASE_58;
+            remainder = temp % BASE;
         }
 
         return (byte) remainder;
     }
 
-    private static byte divmod256(byte[] number58, int startAt) {
+    private static byte divmod256(byte[] number, int startAt) {
         int remainder = 0;
-        for (int i = startAt; i < number58.length; i++) {
-            int digit58 = (int) number58[i] & 0xFF;
-            int temp = remainder * BASE_58 + digit58;
+        for (int i = startAt; i < number.length; i++) {
+            int digit = (int) number[i] & 0xFF;
+            int temp = remainder * BASE + digit;
 
-            number58[i] = (byte) (temp / BASE_256);
+            number[i] = (byte) (temp / BASE_256);
 
             remainder = temp % BASE_256;
         }
