@@ -29,7 +29,7 @@ public class UUIDTest extends BenchmarkTest {
     }
 
     @Benchmark
-    public void bigDecimalDeserializeConcat(Blackhole bh) {
-        bh.consume(new BigDecimal(uuid.generate()));
+    public void benchmarkUuid(Blackhole bh) {
+        bh.consume(uuid.generate());
     }
 }
