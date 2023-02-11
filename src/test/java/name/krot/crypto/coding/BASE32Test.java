@@ -9,30 +9,30 @@ import org.openjdk.jmh.annotations.Benchmark;
 public class BASE32Test extends BaseCoderTest {
     private static final String CODE_EXAMPLE_BASE_32 =
             "2CNNDAGQXDIL7UMC2C7NBM6RQDILBUME2C4NDDZA2C65BMBA2C75DAGQWDILVUMC2C4NBOWQWU======";
-    private final static Coder base32 = new BASE32();
+    private final static Coder BASE_32 = new BASE32();
 
     @Test
     public void testEncodeAndDecode() {
-        super.testEncodeAndDecode(base32);
+        super.testEncodeAndDecode(BASE_32);
     }
 
     @Test
     public void testEncode() {
-        super.testEncode(base32);
+        super.testEncode(BASE_32);
     }
 
     @Test
     public void testDecode() {
-        super.testDecode(base32, CODE_EXAMPLE_BASE_32);
+        super.testDecode(BASE_32, CODE_EXAMPLE_BASE_32);
     }
 
     @Benchmark
     public String benchmarkDecode() {
-        return base32.decode(CODE_EXAMPLE_BASE_32);
+        return BASE_32.decode(CODE_EXAMPLE_BASE_32);
     }
 
     @Benchmark
     public String benchmarkEncode() {
-        return base32.encode(Fish.cryptographyRU());
+        return BASE_32.encode(Fish.cryptographyRU());
     }
 }

@@ -10,30 +10,30 @@ public class BASE58Test extends BaseCoderTest{
 
     private static final String CODE_EXAMPLE_BASE_58 =
             "PnLoVJGrkwjLdzQLVewvVt219CRSHomnt43RHDksnSLbLRZCaiywQp82xx9jiAx";
-    private final static Coder CODER = new BASE58();
+    private final static Coder BASE_58 = new BASE58();
 
     @Test
     public void testEncodeAndDecode() {
-        super.testEncodeAndDecode(CODER);
+        super.testEncodeAndDecode(BASE_58);
     }
 
     @Test
     public void testEncode() {
-        super.testEncode(CODER);
+        super.testEncode(BASE_58);
     }
 
     @Test
     public void testDecode() {
-        super.testDecode(CODER, CODE_EXAMPLE_BASE_58);
+        super.testDecode(BASE_58, CODE_EXAMPLE_BASE_58);
     }
 
     @Benchmark
     public String benchmarkDecode() {
-        return CODER.decode(CODE_EXAMPLE_BASE_58);
+        return BASE_58.decode(CODE_EXAMPLE_BASE_58);
     }
 
     @Benchmark
     public String benchmarkEncode() {
-        return CODER.encode(Fish.cryptographyRU());
+        return BASE_58.encode(Fish.cryptographyRU());
     }
 }

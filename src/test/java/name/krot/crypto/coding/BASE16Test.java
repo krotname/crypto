@@ -8,30 +8,30 @@ public class BASE16Test extends BaseCoderTest {
 
     private static final String CODE_EXAMPLE_BASE16 =
             "D09AD180D0B8D0BFD182D0BED0B3D180D0B0D184D0B8D18F20D0BDD0B020D0BFD180D0B0D0BAD182D0B8D0BAD0B5";
-    private final static Coder base16 = new BASE16();
+    private final static Coder BASE_16 = new BASE16();
 
     @Test
     public void testEncodeAndDecode() {
-        super.testEncodeAndDecode(base16);
+        super.testEncodeAndDecode(BASE_16);
     }
 
     @Test
     public void testEncode() {
-        super.testEncode(base16);
+        super.testEncode(BASE_16);
     }
 
     @Test
     public void testDecode() {
-        super.testDecode(base16, CODE_EXAMPLE_BASE16);
+        super.testDecode(BASE_16, CODE_EXAMPLE_BASE16);
     }
 
     @Benchmark
     public String benchmarkDecode() {
-        return base16.decode(CODE_EXAMPLE_BASE16);
+        return BASE_16.decode(CODE_EXAMPLE_BASE16);
     }
 
     @Benchmark
     public String benchmarkEncode() {
-        return base16.encode(Fish.cryptographyRU());
+        return BASE_16.encode(Fish.cryptographyRU());
     }
 }
