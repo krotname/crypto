@@ -16,7 +16,8 @@ public class CRC32Test extends BenchmarkTest {
 
     @Test
     void hash() {
-        log.info(CRC_32.hash(Fish.cryptographyRU()));
+        String hash = CRC_32.hash(Fish.cryptographyRU());
+        log.info(hash);
     }
 
     @Test
