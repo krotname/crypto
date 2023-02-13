@@ -1,9 +1,11 @@
 package name.krot.crypto.coding;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
+import java.util.function.Function;
 
 @Slf4j
 @Component

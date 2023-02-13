@@ -7,27 +7,36 @@ import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 public class MD5Test extends BenchmarkTest {
 
-    private static final Hash md5 = new MD5();
+    private static final Hash<String,String> MD_5 = new MD5();
 
     @Test
     void hash() {
-        log.info(md5.hash(Fish.cryptographyRU()));
+        log.info(MD_5.hash(Fish.cryptographyRU()));
     }
 
     @Test
     void uniquenessTest() {
-        String hash1 = md5.hash(Fish.cryptographyRU());
-        String hash2 = md5.hash(Fish.cryptographyRU());
+        String hash1 = MD_5.hash(Fish.cryptographyRU());
+        String hash2 = MD_5.hash(Fish.cryptographyRU());
         assertEquals(hash1, hash2);
+    }
+
+    @Test
+    void hashFunction() {
+        Stream.of(Fish.cryptographyRU(), Fish.cryptographyRU())
+                .map(MD_5::hash)
+                .forEach(log::info);
     }
 
     @Benchmark
     public void benchmarkMD5(Blackhole bh) {
-        bh.consume(md5.hash(Fish.cryptographyRU()));
+        bh.consume(MD_5.hash(Fish.cryptographyRU()));
     }
 }

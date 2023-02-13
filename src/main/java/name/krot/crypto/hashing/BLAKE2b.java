@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
 @Slf4j
-public class BLAKE2b implements Hash{
+public class BLAKE2b implements Hash<String,String>{
 
     @Override
     public String hash(String string) {

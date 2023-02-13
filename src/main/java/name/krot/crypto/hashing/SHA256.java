@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SHA256 implements Hash {
+public class SHA256 implements Hash<String,String> {
     @Override
     public String hash(String string) {
         try {

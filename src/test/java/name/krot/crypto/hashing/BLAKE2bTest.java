@@ -7,12 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class BLAKE2bTest extends BenchmarkTest {
 
-    private final static Hash BLAKE2b = new BLAKE2b();
+    private final static Hash<String,String> BLAKE2b = new BLAKE2b();
     @Test
     void hash() {
         String hash = BLAKE2b.hash(Fish.cryptographyRU());
@@ -24,6 +26,13 @@ public class BLAKE2bTest extends BenchmarkTest {
         String hash1 = BLAKE2b.hash(Fish.cryptographyRU());
         String hash2 = BLAKE2b.hash(Fish.cryptographyRU());
         assertEquals(hash1, hash2);
+    }
+
+    @Test
+    void hashFunction() {
+        Stream.of(Fish.cryptographyRU(), Fish.cryptographyRU())
+                .map(BLAKE2b::hash)
+                .forEach(log::info);
     }
 
     @Benchmark

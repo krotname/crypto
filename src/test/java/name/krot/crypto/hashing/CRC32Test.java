@@ -7,12 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class CRC32Test extends BenchmarkTest {
 
-    private final static Hash CRC_32 = new CRC32();
+    private final static Hash<String,String> CRC_32 = new CRC32();
 
     @Test
     void hash() {
@@ -25,6 +27,13 @@ public class CRC32Test extends BenchmarkTest {
         String hash1 = CRC_32.hash(Fish.cryptographyRU());
         String hash2 = CRC_32.hash(Fish.cryptographyRU());
         assertEquals(hash1, hash2);
+    }
+
+    @Test
+    void hashFunction() {
+        Stream.of(Fish.cryptographyRU(), Fish.cryptographyRU())
+                .map(CRC_32::hash)
+                .forEach(log::info);
     }
 
     @Benchmark

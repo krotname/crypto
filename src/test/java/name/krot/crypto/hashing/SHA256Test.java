@@ -7,12 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 public class SHA256Test extends BenchmarkTest {
 
-    private final static Hash SHA256 = new SHA256();
+    private final static Hash<String, String> SHA256 = new SHA256();
+
     @Test
     void hash() {
         String hash = SHA256.hash(Fish.cryptographyRU());
@@ -24,6 +27,13 @@ public class SHA256Test extends BenchmarkTest {
         String hash1 = SHA256.hash(Fish.cryptographyRU());
         String hash2 = SHA256.hash(Fish.cryptographyRU());
         assertEquals(hash1, hash2);
+    }
+
+    @Test
+    void hashFunction() {
+        Stream.of(Fish.cryptographyRU(), Fish.cryptographyRU())
+                .map(SHA256::hash)
+                .forEach(log::info);
     }
 
     @Benchmark
