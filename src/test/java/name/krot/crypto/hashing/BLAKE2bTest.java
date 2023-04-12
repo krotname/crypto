@@ -36,7 +36,7 @@ public class BLAKE2bTest extends BenchmarkTest {
     }
 
     @Benchmark
-    public void benchmarkCRC32(Blackhole bh) {
+    public void benchmark(Blackhole bh) {
         bh.consume(BLAKE2b.hash(Fish.cryptographyRU()));
     }
 }

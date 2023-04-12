@@ -36,7 +36,7 @@ public class MD5Test extends BenchmarkTest {
     }
 
     @Benchmark
-    public void benchmarkMD5(Blackhole bh) {
+    public void benchmark(Blackhole bh) {
         bh.consume(MD_5.hash(Fish.cryptographyRU()));
     }
 }

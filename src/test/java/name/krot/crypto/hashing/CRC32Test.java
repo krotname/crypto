@@ -37,7 +37,7 @@ public class CRC32Test extends BenchmarkTest {
     }
 
     @Benchmark
-    public void benchmarkCRC32(Blackhole bh) {
+    public void benchmark(Blackhole bh) {
         bh.consume(CRC_32.hash(Fish.cryptographyRU()));
     }
 }

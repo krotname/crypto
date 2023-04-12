@@ -37,7 +37,7 @@ public class SHA256Test extends BenchmarkTest {
     }
 
     @Benchmark
-    public void benchmarkCRC32(Blackhole bh) {
+    public void benchmark(Blackhole bh) {
         bh.consume(SHA256.hash(Fish.cryptographyRU()));
     }
 }

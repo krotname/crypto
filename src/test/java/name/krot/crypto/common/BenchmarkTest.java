@@ -18,6 +18,6 @@ public class BenchmarkTest extends TestWithExecutionTime {
     static final int THREADS = 1;
     static final int WARMUP_MILLISECONDS = 10;
     static final int ITERATIONS = 1;
-    static final int MEASUREMENT_MILLISECONDS = 100;
+    static final int MEASUREMENT_MILLISECONDS = 1000;
     static final int FORK = 0;
 }

@@ -39,6 +39,8 @@ dependencies {
     implementation 'org.apache.directory.studio:org.apache.commons.codec:1.8'
     implementation 'org.bitcoinj:bitcoinj-core:0.16.2'
     implementation 'com.rfksystems:blake2b:1.0.0'
+    implementation 'com.google.guava:guava:31.1-jre'
+
 
     testAnnotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.36"
     testImplementation "org.openjdk.jmh:jmh-core:1.36"
