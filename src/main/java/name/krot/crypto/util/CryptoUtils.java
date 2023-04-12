@@ -71,6 +71,17 @@ public class CryptoUtils {
 
     }
 
+    public static String getHexString(byte[] hash) { // todo del another
+        final StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            final String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1)
+                hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
     public static String generateSalt16() {
         return KeyGenerators.string().generateKey();
     }
