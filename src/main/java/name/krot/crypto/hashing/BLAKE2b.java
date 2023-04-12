@@ -2,15 +2,17 @@ package name.krot.crypto.hashing;
 
 import com.rfksystems.blake2b.security.Blake2bProvider;
 import lombok.extern.slf4j.Slf4j;
-import name.krot.crypto.exception.CryptException;
+import name.krot.crypto.exception.HashException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
+import static name.krot.crypto.util.CryptoUtils.getHexString;
+
 @Slf4j
-public class BLAKE2b implements Hash<String,String>{
+public class BLAKE2b implements Hash<String, String> {
 
     @Override
     public String hash(String string) {
@@ -22,18 +24,7 @@ public class BLAKE2b implements Hash<String,String>{
 
             return getHexString(hash);
         } catch (NoSuchAlgorithmException e) {
-            throw new CryptException(e);
+            throw new HashException(e);
         }
-    }
-
-    private static String getHexString(byte[] hash) {
-        final StringBuilder hexString = new StringBuilder();
-        for (byte b : hash) {
-            final String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1)
-                hexString.append('0');
-            hexString.append(hex);
-        }
-        return hexString.toString();
     }
 }
