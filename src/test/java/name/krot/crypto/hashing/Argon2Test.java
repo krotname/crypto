@@ -9,40 +9,43 @@ import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-public class BCryptTest extends BenchmarkTest {
+public class Argon2Test extends BenchmarkTest {
 
-    private final static BCrypt B_CRYPT = new BCrypt();
+
+    private final static Argon2 ARGON_2 = new Argon2();
+
     @Test
     void hash() {
-        String hash = B_CRYPT.hash(Fish.cryptographyRU());
+        String hash = ARGON_2.hash(Fish.cryptographyRU());
         log.info(hash);
     }
 
     @Test
     void nonUniquenessTest() {
-        String hash1 = B_CRYPT.hash(Fish.cryptographyRU());
-        String hash2 = B_CRYPT.hash(Fish.cryptographyRU());
+        String hash1 = ARGON_2.hash(Fish.cryptographyRU());
+        String hash2 = ARGON_2.hash(Fish.cryptographyRU());
         assertNotEquals(hash1, hash2);
     }
 
     @Test
     void matchesTest() {
-        String hash1 = B_CRYPT.hash(Fish.cryptographyRU());
-        assertTrue(B_CRYPT.matches(Fish.cryptographyRU(), hash1));
+        String hash1 = ARGON_2.hash(Fish.cryptographyRU());
+        assertTrue(ARGON_2.matches(Fish.cryptographyRU(), hash1));
     }
 
     @Test
     void hashFunction() {
         Stream.of(Fish.cryptographyRU(), Fish.cryptographyRU())
-                .map(B_CRYPT::hash)
+                .map(ARGON_2::hash)
                 .forEach(log::info);
     }
 
     @Benchmark
     public void benchmark(Blackhole bh) {
-        bh.consume(B_CRYPT.hash(Fish.cryptographyRU()));
+        bh.consume(ARGON_2.hash(Fish.cryptographyRU()));
     }
 }
