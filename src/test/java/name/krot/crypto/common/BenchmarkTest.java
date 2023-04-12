@@ -13,11 +13,11 @@ import static name.krot.crypto.common.BenchmarkTest.*;
 @OutputTimeUnit(TimeUnit.SECONDS)
 public class BenchmarkTest extends TestWithExecutionTime {
 
-    static final String XMS = "-Xms2G";
-    static final String XMX = "-Xmx2G";
-    static final int THREADS = 1;
-    static final int WARMUP_MILLISECONDS = 100;
-    static final int ITERATIONS = 1;
-    static final int MEASUREMENT_MILLISECONDS = 1000;
-    static final int FORK = 0;
+    public static final String XMS = "-Xms2G";
+    public static final String XMX = "-Xmx2G";
+    public static final int THREADS = 1;
+    public static final int WARMUP_MILLISECONDS = 100;
+    public static final int ITERATIONS = 1;
+    public static final int MEASUREMENT_MILLISECONDS = 1000;
+    public static final int FORK = 0;
 }
